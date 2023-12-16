@@ -1,8 +1,8 @@
 ---
 
-- name: install epel-release
+- name: install epel-release wget
   shell: |
-         sudo dnf install epel-release -y
+         sudo dnf install epel-release wget  -y
   
 - name: download nexus
   shell: |
@@ -12,7 +12,7 @@
 
 - name: centos 8 binaries
   shell: |
-         sudo dnf install wget java-1.8.0-openjdk.x86_64 git -y
+         sudo dnf install java-1.8.0-openjdk.x86_64 git -y
 
 - name: install maven git
   shell: |

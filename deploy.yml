@@ -9,8 +9,11 @@
     nexus_ver: 3.62.0-01
   roles: 
     # - { role: common, update: true, download_bin: true, adduser: true } 
+    # - { role: common, allowport: true }   
     # - { role: nexus, setup_bashrc: true, become_user: nexus } 
-    - { role: nexus, setup_folder: true }   
+    # - { role: nexus, setup_folder: true }   
+    - { role: nexus, setup_startup: true }   
+    # - { role: nexus, iac: true }   
     # - { role: common, cleanup: true }
   tags: 
     - deploy_centos8

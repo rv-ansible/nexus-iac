@@ -1,0 +1,16 @@
+---
+
+# - name: Reload systemd
+#   systemd:
+#     deamon_reload: yes
+
+- name: Restart nexus
+  service:
+    state: restarted
+    name: nexus
+
+- name: Wait for nexus to start listening on port 8081
+  wait_for:
+    port: 8081
+    host: 0.0.0.0
+    delay: 1     

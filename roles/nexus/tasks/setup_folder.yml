@@ -7,13 +7,12 @@
          mv nexus-"{{ nexus_ver }}" nexus
          mv nexus/ sonatype/
          mv sonatype-work/ sonatype/
-         chown -R nexus:nexus /opt/sonatype/nexus
-         chown -R nexus:nexus /opt/sonatype/sonatype-work
-         chmod -R 755 /opt/sonatype/nexus
-         chmod -R 755 /opt/sonatype/sonatype-work
   args:
     chdir: /opt
 
+- name: change attribute and ownership
+  include_tasks: chown.yml
+ 
 - name: Check /opt/nexus.sh exists
   stat:
     path: /opt/nexus.sh
@@ -31,3 +30,7 @@
   args:
     chdir: /opt
   when: not stat_result.stat.exists  
+
+- name: make run_as_user as nexus
+  shell: |
+         echo 'run_as_user="nexus"' > /opt/sonatype/nexus/bin/nexus.rc  

@@ -1,0 +1,7 @@
+---
+
+- name: allow port
+  shell: |
+         firewall-cmd --zone=public --permanent --add-port 8081/tcp
+         firewall-cmd --zone=public --permanent --add-port 8070/tcp
+         firewall-cmd --reload
