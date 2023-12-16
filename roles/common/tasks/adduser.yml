@@ -1,0 +1,6 @@
+---
+
+- name: add nexus user
+  user:
+    name: nexus
+    expires: -1

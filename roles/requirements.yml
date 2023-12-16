@@ -1,0 +1,7 @@
+---
+# add ansible galaxy here
+#
+# - name: tps_mail_logs
+#   src: https://github.com/rv-ansible/tps_mail_logs.git
+#   scm: git
+#   when: getversion|default(False)==True

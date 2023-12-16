@@ -1,0 +1,22 @@
+---
+
+- name: install epel-release
+  shell: |
+         sudo dnf install epel-release -y
+  
+- name: download nexus
+  shell: |
+         wget https://download.sonatype.com/nexus/3/nexus-"{{ nexus_ver }}"-unix.tar.gz
+  args:
+    chdir: /opt       
+
+- name: centos 8 binaries
+  shell: |
+         sudo dnf install wget java-1.8.0-openjdk.x86_64 git -y
+
+- name: install maven git
+  shell: |
+         # if git already exist, it will be ignored
+         sudo dnf install maven git -y
+  when: "'plugin' in {{group_names}}"
+

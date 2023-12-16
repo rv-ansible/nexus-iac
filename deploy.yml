@@ -1,0 +1,17 @@
+---
+
+- name: Bootstrap Nexus Sonatype IAC
+  hosts: nexus
+  gather_facts: true
+  any_errors_fatal: true
+  become: true   
+  vars:
+    nexus_ver: 3.62.0-01
+  roles: 
+    # - { role: common, update: true, download_bin: true, adduser: true } 
+    # - { role: nexus, setup_bashrc: true, become_user: nexus } 
+    - { role: nexus, setup_folder: true }   
+    # - { role: common, cleanup: true }
+  tags: 
+    - deploy_centos8
+           

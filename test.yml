@@ -1,0 +1,19 @@
+---
+
+- name: ping
+  hosts: nexus
+  # become: true
+  vars:
+    testy: "test"
+
+  tasks: 
+    - shell: echo {{hostvars}}
+    #   register: reg
+    # - debug: var=reg
+    # - ping: 
+    # - shell: ls /root
+    #   become: true
+    # - shell: echo "{{testy}}"
+    #   register: reg
+    # - debug: var=reg
+    

@@ -1,0 +1,7 @@
+---
+
+- include_tasks: setup_bashrc.yml
+  when: setup_bashrc|default(False)==True  
+          
+- include_tasks: setup_folder.yml
+  when: setup_folder|default(False)==True  

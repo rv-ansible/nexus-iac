@@ -1,0 +1,5 @@
+---
+
+- name: remove binaries
+  shell: | 
+         rm -f /opt/nexus*.tar.gz

@@ -1,0 +1,6 @@
+---
+
+- name: "dnf update centos"
+  shell: | 
+         sudo dnf update -y
+  become: true  
