@@ -2,15 +2,16 @@
 
 - name: ping
   hosts: nexus
+  gather_facts: false
   # become: true
   vars:
     testy: "test"
 
   tasks: 
-    # - shell: echo {{hostvars}}
+    - shell: echo {{ ansible_hostname }} > /tmp/host
     #   register: reg
     # - debug: var=reg
-    - ping: 
+    # - ping: 
     # - shell: ls /root
     #   become: true
     # - shell: echo "{{testy}}"

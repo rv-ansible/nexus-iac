@@ -1,0 +1,28 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+export BASE_URL=http://{{ ansible_hostname }}:8081
+export NEXUS_HOME=/opt/sonatype/nexus
+export NEXUS_CASC_CONFIG=/opt/nexus.yml
+export NEXUS_UI_PORT=8081
+export PLUGIN_VERSION={{ nexus_ver }}
+export SONATYPE_DIR=/opt/sonatype
+export SONATYPE_WORK=/opt/sonatype/sonatype-work
+export HOME=/opt/sonatype/nexus
+export PWD=/opt/sonatype         

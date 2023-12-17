@@ -1,18 +1,10 @@
 ---
 
 - name: setup nexus bashrc
-  shell: |
-         tee -a ~/.bashrc << END
-         export BASE_URL=http://nexus-vm:8081
-         export NEXUS_HOME=/opt/sonatype/nexus
-         export NEXUS_CASC_CONFIG=/opt/nexus.yml
-         export NEXUS_UI_PORT=8081
-         export PLUGIN_VERSION="{{ nexus_ver }}"
-         export SONATYPE_DIR=/opt/sonatype
-         export SONATYPE_WORK=/opt/sonatype/sonatype-work
-         export HOME=/opt/sonatype/nexus
-         export PWD=/opt/sonatype         
-         END
-  args:
-    chdir: /home/nexus
-  become_user: nexus    
+  template:
+    src: bashrc.j2
+    dest: "/home/nexus/.bashrc"
+    mode: '0422' 
+    owner: nexus
+    group: nexus
+  become_user: nexus      
