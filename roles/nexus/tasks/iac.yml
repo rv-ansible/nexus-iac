@@ -40,19 +40,19 @@
 - name: Start using the script
   include_tasks: start_stop.yml
 
-# - name: Cleanup 
-#   shell: | 
-#          rm -f /opt/nexus*.tar.gz*
-#          rm -f /opt/nexus.yml    
-#          sed -i 's/nexus.scripts.allowCreation=true//'  /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties  
+- name: Cleanup 
+  shell: | 
+         rm -f /opt/nexus*.tar.gz*
+         rm -f /opt/nexus.yml    
+         sed -i 's/nexus.scripts.allowCreation=true//'  /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties  
 
-# - name: End message
-#   shell: |
-#          echo "********************************************************************************"
-#          echo "* Please do the first login to the $BASE_URL, change the password and save it! *"  
-#          echo "* To finish the Nexus Sonatype Setup.                                          *"
-#          echo "********************************************************************************"
-#   become_user: nexus        
+- name: End message
+  shell: |
+         echo "********************************************************************************"
+         echo "* Please do the first login to the $BASE_URL, change the password and save it! *"  
+         echo "* To finish the Nexus Sonatype Setup.                                          *"
+         echo "********************************************************************************"
+  become_user: nexus        
 
-# - shell: echo "Restart nexus daemon"
-#   notify: "Restart nexus service"       
+- shell: echo "Restart nexus daemon"
+  notify: "Restart nexus service"       
