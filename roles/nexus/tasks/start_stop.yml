@@ -1,8 +1,9 @@
 ---
 
 - name: Start nexus with script
-  shell: /opt/nexus.sh
-  become_user: nexus                  
+  ansible.builtin.command: /opt/nexus.sh
+  async: 45
+  poll: 0
 
 - name: Wait for nexus to start listening on port 8081
   ansible.builtin.wait_for:
@@ -10,5 +11,5 @@
     host: 0.0.0.0
 
 - name: Stop nexus with kill
-  shell: |
-         kill -9 `ps u -N -u root|grep nexus|awk '{print $2}'`
+  shell: kill -9 `ps -ef|grep nexus|grep java-1.8.0-openjdk|awk '{print $2}'`
+  ignore_errors: true

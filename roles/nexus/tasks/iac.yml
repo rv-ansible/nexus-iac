@@ -54,5 +54,6 @@
          echo "********************************************************************************"
   become_user: nexus        
 
-- shell: echo "Restart nexus daemon"
+- name: Finally start nexus with daemon service
+  shell: echo "Restart nexus daemon"
   notify: "Restart nexus service"       
