@@ -3,12 +3,11 @@ Nexus Infrastructure As Code
 
 ### Prerequisites
 - centos8 with sudo access
-- binaries (if you can't download)
-    epel-release
-    wget
-    nexus-3.62.0-01-unix.tar.gz
-    java-1.8.0-openjdk.x86_64
-    maven
+- epel-release
+- wget
+- nexus-3.62.0-01-unix.tar.gz
+- java-1.8.0-openjdk.x86_64
+- maven
 
 ### Instructions
 
