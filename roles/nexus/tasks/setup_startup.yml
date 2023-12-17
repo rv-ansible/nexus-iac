@@ -6,14 +6,21 @@
     dest: "/etc/systemd/system/nexus.service"
     mode: '0755' 
     owner: root
+
+- name: Daemon reload
+  shell: systemctl daemon-reload    
   
-- name: First start of nexus so sa to generate the init password
-  service:
+- name: First start of nexus
+  ansible.builtin.systemd_service:
     name: nexus
     state: started
-  notify: "Wait for nexus to start listening on port 8081"
+
+- name: Wait for nexus to start listening on port 8081
+  ansible.builtin.wait_for:
+    port: 8081
+    host: 0.0.0.0
 
 - name: First stop of nexus
-  service:
+  ansible.builtin.systemd_service:
     name: nexus
     state: stopped

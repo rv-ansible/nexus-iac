@@ -1,6 +1,0 @@
----
-
-- name: cleanup 
-  shell: | 
-         rm -f /opt/nexus*.tar.gz.*
-         rm -f /opt/nexus.yml

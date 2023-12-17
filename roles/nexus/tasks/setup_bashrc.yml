@@ -11,8 +11,8 @@
          export SONATYPE_DIR=/opt/sonatype
          export SONATYPE_WORK=/opt/sonatype/sonatype-work
          export HOME=/opt/sonatype/nexus
-         export PWD=/opt/sonatype
-         export NEXUS_PASSWD=86a94636-c933-49d6-b327-41f12a806939
+         export PWD=/opt/sonatype         
          END
   args:
     chdir: /home/nexus
+  become_user: nexus    

@@ -13,24 +13,6 @@
 - name: change attribute and ownership
   include_tasks: chown.yml
  
-- name: Check /opt/nexus.sh exists
-  stat:
-    path: /opt/nexus.sh
-  register: stat_result
-
-- name: create nexus script
-  shell: | 
-         tee -a nexus.sh << END    
-         #!/bin/bash
-         cd /opt/sonatype/nexus
-         exec ./bin/nexus run    
-         END
-         chmod 755 nexus.sh
-         chown nexus:nexus nexus.sh
-  args:
-    chdir: /opt
-  when: not stat_result.stat.exists  
-
 - name: make run_as_user as nexus
   shell: |
          echo 'run_as_user="nexus"' > /opt/sonatype/nexus/bin/nexus.rc  

@@ -16,7 +16,7 @@
 
 - name: install maven git
   shell: |
-         # if git already exist, it will be ignored
-         sudo dnf install maven git -y
+         # if build is on different vm
+         sudo dnf install java-1.8.0-openjdk.x86_64 git maven -y
   when: "'plugin' in {{group_names}}"
 
