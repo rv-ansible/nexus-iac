@@ -10,6 +10,10 @@
     port: 8081
     host: 0.0.0.0
 
+- name: Pause for 5 seconds
+  ansible.builtin.pause:
+    seconds: 5    
+
 - name: Stop nexus with kill
   shell: kill -9 `ps -ef|grep nexus|grep java-1.8.0-openjdk|awk '{print $2}'`
   ignore_errors: true
