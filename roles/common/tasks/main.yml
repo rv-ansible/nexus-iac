@@ -11,6 +11,3 @@
 
 - include_tasks: allowport.yml
   when: allowport|default(False)==True
-
-- include_tasks: cleanup.yml
-  when: cleanup|default(False)==True
