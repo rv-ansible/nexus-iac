@@ -21,5 +21,5 @@ Make sure ansible_user have sudo access.
 
 Run the ansible in cli,
 ```
-ansible-playbook -i inventory/linux.ini deploy.yml
+ansible-playbook -i inventory/linux.ini deploy.yml -v
 ```

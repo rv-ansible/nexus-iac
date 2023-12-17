@@ -10,17 +10,5 @@
 - name: Daemon reload
   shell: systemctl daemon-reload    
   
-- name: First start of nexus
-  ansible.builtin.systemd_service:
-    name: nexus
-    state: started
-
-- name: Wait for nexus to start listening on port 8081
-  ansible.builtin.wait_for:
-    port: 8081
-    host: 0.0.0.0
-
-- name: First stop of nexus
-  ansible.builtin.systemd_service:
-    name: nexus
-    state: stopped
+- name: Start using the script
+  include_tasks: start_stop.yml

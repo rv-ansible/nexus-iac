@@ -14,6 +14,7 @@
     dest: "/opt/nexus.yml"
     mode: '0755' 
     owner: nexus
+    group: nexus
 
 - name: git clone 
   shell: |
@@ -36,25 +37,14 @@
 - name: Change attribute and ownership
   include_tasks: chown.yml
 
-- name: Start nexus service again
-  ansible.builtin.systemd_service:
-    name: nexus
-    state: started
-
-- name: Wait for nexus to start listening on port 8081
-  ansible.builtin.wait_for:
-    port: 8081
-    host: 0.0.0.0
-
-# - name: Stop nexus service again
-#   ansible.builtin.systemd_service:
-#     name: nexus
-#     state: stopped    
+- name: Start using the script
+  include_tasks: start_stop.yml
 
 # - name: Cleanup 
 #   shell: | 
 #          rm -f /opt/nexus*.tar.gz*
-#          rm -f /opt/nexus.yml      
+#          rm -f /opt/nexus.yml    
+#          sed -i 's/nexus.scripts.allowCreation=true//'  /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties  
 
 # - name: End message
 #   shell: |
@@ -64,5 +54,5 @@
 #          echo "********************************************************************************"
 #   become_user: nexus        
 
-# - shell: echo "Restart nexus service"
+# - shell: echo "Restart nexus daemon"
 #   notify: "Restart nexus service"       

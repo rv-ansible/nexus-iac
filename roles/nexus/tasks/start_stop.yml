@@ -1,0 +1,14 @@
+---
+
+- name: Start nexus with script
+  shell: /opt/nexus.sh
+  become_user: nexus                  
+
+- name: Wait for nexus to start listening on port 8081
+  ansible.builtin.wait_for:
+    port: 8081
+    host: 0.0.0.0
+
+- name: Stop nexus with kill
+  shell: |
+         kill -9 `ps u -N -u root|grep nexus|awk '{print $2}'`
