@@ -17,3 +17,9 @@ On <home>/.bashrc add,
 export ansible_user=xxx
 export ansible_password=xxx
 ```
+Make sure ansible_user have sudo access.
+
+Run the ansible in cli,
+```
+ansible-playbook -i inventory/linux.ini deploy.yml
+```
