@@ -10,7 +10,7 @@
 
 - name: Copy nexus.yml
   template:
-    src: nexus.j2
+    src: nexus.yml.j2
     dest: "/opt/nexus.yml"
     mode: '0755' 
     owner: nexus
