@@ -6,7 +6,6 @@
   become: true   
   vars:
     nexus_ver: 3.62.0-01
-    vm: nexus-vm
   roles: 
     - { role: common, update: true, download_bin: true, adduser: true } 
     - { role: common, allowport: true }   
