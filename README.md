@@ -2,7 +2,7 @@
 Nexus Sonatype Infrastructure As Code using [nexus-casc-plugin](https://github.com/AdaptiveConsulting/nexus-casc-plugin)
 
 ### Prerequisites
-- centos8 with sudo access
+- centos8/stream with sudo access
 - internet access
 - dns server, if none, use /etc/hosts
 
