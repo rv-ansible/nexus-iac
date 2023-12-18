@@ -1,7 +1,6 @@
 ---
-# add ansible galaxy here
-#
-# - name: mail_logs
-#   src: https://github.com/xxxxxx/mail_logs.git
-#   scm: git
-#   when: getversion|default(False)==True
+
+- name: rv-common
+  src: https://github.com/rv-ansible/rv-common.git
+  scm: git
+  version: main

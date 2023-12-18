@@ -3,6 +3,12 @@ Nexus Sonatype Infrastructure As Code using [nexus-casc-plugin](https://github.c
 
 ![image](https://github.com/rv-ansible/nexus-iac/assets/35533668/afc87414-7881-4556-80f1-1dc93ceeab3a)
 
+### Prerequisites
+```
+ansible-galaxy install -r roles/requirements.yml
+```
+***No need for this on Ansible Tower but needed on Ansible CLI***
+
 ### Requirements
 - centos8/stream with sudo access
 - internet access

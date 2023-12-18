@@ -5,14 +5,23 @@
   any_errors_fatal: true
   become: true   
   vars:
-    nexus_ver: 3.62.0-01
+    nexus_ver: 3.62.0-01   
+    packages_list:
+      - epel-release 
+      - wget
+      - java-1.8.0-openjdk.x86_64 
+      - git
+    plugin_list:
+      - java-1.8.0-openjdk.x86_64 
+      - git 
+      - maven     
   roles: 
-    # - { role: common, update: true, download_bin: true, adduser: true } 
-    # - { role: common, allowport: true }   
+    - { role: rv-common, update: true, download_bin: true, adduser: true } 
+    - { role: rv-common, allowport: true }   
     - { role: nexus, setup_bashrc: true } 
-    # - { role: nexus, setup_folder: true }   
-    # - { role: nexus, setup_startup: true }   
-    # - { role: nexus, iac: true }   
+    - { role: nexus, setup_folder: true }   
+    - { role: nexus, setup_startup: true }   
+    - { role: nexus, iac: true }   
   tags: 
     - deploy_centos8
            
