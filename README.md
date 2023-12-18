@@ -1,6 +1,8 @@
 # nexus-iac
 Nexus Sonatype Infrastructure As Code using [nexus-casc-plugin](https://github.com/AdaptiveConsulting/nexus-casc-plugin)
 
+![image](https://github.com/rv-ansible/nexus-iac/assets/35533668/afc87414-7881-4556-80f1-1dc93ceeab3a)
+
 ### Prerequisites
 - centos8/stream with sudo access
 - internet access
