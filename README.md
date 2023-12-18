@@ -31,4 +31,4 @@ Run the ansible in cli,
 ansible-playbook -i inventory/linux.ini deploy.yml -v
 ```
 
-***I did not add sudo access on nexus user, it still works, I tested pull on the docker proxy and push on the docker hosted, it works***
+***I did not add sudo access on nexus user, it still works, I tested pull on the docker proxy and push on the docker hosted***
