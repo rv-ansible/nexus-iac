@@ -1,5 +1,5 @@
 # nexus-iac
-Nexus Infrastructure As Code using nexus-casc-plugin
+Nexus Sonatype Infrastructure As Code using nexus-casc-plugin
 
 ### Prerequisites
 - centos8 with sudo access
