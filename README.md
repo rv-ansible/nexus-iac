@@ -24,7 +24,7 @@ On <home>/.bashrc of ansible, add,
 export ansible_user=xxx
 export ansible_password=xxx
 ```
-Make sure ansible_user have sudo access.
+Make sure ansible_user have sudo access on the target vm.
 
 Run the ansible in cli,
 ```
