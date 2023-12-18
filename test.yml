@@ -1,6 +1,6 @@
 ---
 
-- name: ping
+- name: testing
   hosts: nexus
   gather_facts: false
   # become: true
