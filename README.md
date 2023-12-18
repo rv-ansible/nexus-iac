@@ -8,7 +8,7 @@ Nexus Infrastructure As Code
 
 ### if firewalled, you need these binaries, 
 ### unfortunately you have to do it, 
-### please create add it and create a pull request,
+### please add it and create a pull request,
 ```
 - epel-release</br>
 - wget</br>
