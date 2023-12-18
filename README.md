@@ -6,9 +6,9 @@ Nexus Infrastructure As Code
 - internet access
 - dns server, if none, use /etc/hosts
 
-If firewalled, you need these binaries, 
+_If firewalled, you need these binaries, 
 unfortunately you have to do it, 
-please add it and create a pull request,
+please add it and create a pull request,_
 ```
 - epel-release</br>
 - wget</br>
