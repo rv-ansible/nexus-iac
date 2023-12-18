@@ -1,7 +1,7 @@
 ---    
   
 - name: setup nexus bashrc
-  lineinfile: 
+  ansible.builtin.lineinfile: 
     dest: /home/nexus/.bashrc
     line: "{{ item.lineadd }}"
   with_items:
