@@ -1,6 +1,6 @@
 
 nexus_ver: 3.62.0-01  
-nexus_user: nexus
+app_user: nexus
 git_plugin: https://github.com/AdaptiveConsulting/nexus-casc-plugin.git
 url_package: https://download.sonatype.com/nexus/3/nexus-{{ nexus_ver }}-unix.tar.gz
 
