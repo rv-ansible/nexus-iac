@@ -4,6 +4,7 @@ Nexus Sonatype Infrastructure As Code using [nexus-casc-plugin](https://github.c
 ![image](https://github.com/rv-ansible/nexus-iac/assets/35533668/afc87414-7881-4556-80f1-1dc93ceeab3a)
 
 ### Prerequisites
+ansible 2.16.1+
 ```
 cd nexus-iac
 rm -fr ~/.ansible/roles/rv-common || echo .
