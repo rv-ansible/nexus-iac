@@ -44,5 +44,5 @@ ansible-playbook -i inventory/linux.ini deploy.yml -v
 
 ***I did not add sudo access on nexus user, it still works, I tested pull on the docker proxy and push on the docker hosted.***</br>
 ***Make sure the Nexus Sonatype version is the same as the nexus-casc-plugin version/tag.***</br>
-***The version or tag is defined on the variable of deploy.yml.***</br>
+***The version or tag is defined on the variable of group_vars/all.***</br>
 ***The docker I haven't started it yet but if you can please create a pull request.***</br>
