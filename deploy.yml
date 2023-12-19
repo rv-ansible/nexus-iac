@@ -29,7 +29,6 @@
   become: true   
   vars:  
     package_list:
-      - git 
       - maven     
   roles: 
     - { role: rv-common, download_bin: true } 
