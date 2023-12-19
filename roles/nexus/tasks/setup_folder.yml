@@ -1,14 +1,23 @@
 ---
 
+- name: Check /opt/sonatype folder
+  stat:
+    path: /opt/sonatype
+  register: file_info
+  failed_when: file_info.stat.exists
+
+- name: unarchive tar
+  ansible.builtin.unarchive:
+    src: /opt/nexus-{{ nexus_ver }}-unix.tar.gz
+    dest: /opt
+    remote_src: yes
+
 - name: setup nexus folder
   shell: |
-         tar xvf nexus-"{{ nexus_ver }}"-unix.tar.gz
-         mkdir sonatype
-         mv nexus-"{{ nexus_ver }}" nexus
-         mv nexus/ sonatype/
-         mv sonatype-work/ sonatype/
-  args:
-    chdir: /opt
+         mkdir -p /opt/sonatype
+         mv /opt/nexus-"{{ nexus_ver }}" /opt/nexus
+         mv /opt/nexus/ /opt/sonatype/
+         mv /opt/sonatype-work/ /opt/sonatype/
  
 - name: Create nexus script -without this IAC will not be possible
   template:
