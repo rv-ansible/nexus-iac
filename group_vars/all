@@ -14,3 +14,7 @@ bashrc_env:
   - "export SONATYPE_WORK=/opt/sonatype/sonatype-work"  
   - "export HOME=/opt/sonatype/nexus"   
   - "export PWD=/opt/sonatype"  
+
+firewall_list:
+ - 8081/tcp
+ - 8070/tcp
