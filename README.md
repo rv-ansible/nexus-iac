@@ -23,7 +23,6 @@ unfortunately you have to do it,
 please add it and create a pull request,_
 ```
 - epel-release
-- wget
 - nexus-3.62.0-01-unix.tar.gz
 - java-1.8.0-openjdk.x86_64
 - maven
