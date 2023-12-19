@@ -1,27 +1,47 @@
 ---
 
-- name: Bootstrap Nexus Sonatype IAC
+- name: Bootstrap Nexus Sonatype IAC 1
   hosts: nexus
   any_errors_fatal: true
   become: true   
-  vars:
-    nexus_ver: 3.62.0-01   
+  vars: 
     packages_list:
       - epel-release 
       - wget
       - java-1.8.0-openjdk.x86_64 
-      - git
     plugin_list:
+      - epel-release 
+      - wget
       - java-1.8.0-openjdk.x86_64 
       - git 
       - maven     
   roles: 
-    - { role: rv-common, update: true, download_bin: true, adduser: true } 
+    - { role: rv-common, update: true }
+    - { role: rv-common, download_bin: true, adduser: true } 
     - { role: rv-common, allowport: true }   
     - { role: nexus, setup_bashrc: true } 
     - { role: nexus, setup_folder: true }   
     - { role: nexus, setup_startup: true }   
-    - { role: nexus, iac: true }   
+    - { role: nexus, iac1: true }   
+  tags: 
+    - deploy_centos8
+
+- name: Bootstrap Nexus Sonatype IAC 2
+  hosts: plugin
+  any_errors_fatal: true
+  become: true   
+  roles:
+    - { role: rv-common, update: true }
+    - { role: nexus, iac2: true }  
+  tags: 
+    - deploy_centos8
+
+- name: Bootstrap Nexus Sonatype IAC 3
+  hosts: nexus
+  any_errors_fatal: true
+  become: true   
+  roles:
+    - { role: nexus, iac3: true }
   tags: 
     - deploy_centos8
            

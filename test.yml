@@ -1,20 +1,25 @@
 ---
 
 - name: testing
-  hosts: nexus
+  hosts: local
   gather_facts: false
   # become: true
   vars:
     testy: "test"
 
   tasks: 
-    - shell: echo {{ ansible_hostname }} > /tmp/host
-    #   register: reg
-    # - debug: var=reg
+    - shell: echo {{ groups['plugin'] }} 
+      register: reg
+    - set_fact: 
+        vm_name: '{{ reg.stdout | replace("[","") | replace("]","") }}'
+    - debug: 
+        msg: "{{vm_name}}"   
+    # - shell: echo {{ ansible_hostname }} > /tmp/host
     # - ping: 
     # - shell: ls /root
     #   become: true
     # - shell: echo "{{testy}}"
     #   register: reg
     # - debug: var=reg
+    
     

@@ -9,5 +9,11 @@
 - include_tasks: setup_startup.yml
   when: setup_startup|default(False)==True  
 
-- include_tasks: iac.yml
-  when: iac|default(False)==True  
+- include_tasks: iac1.yml
+  when: iac1|default(False)==True  
+
+- include_tasks: iac2.yml
+  when: iac2|default(False)==True  
+
+- include_tasks: iac3.yml
+  when: iac3|default(False)==True  
