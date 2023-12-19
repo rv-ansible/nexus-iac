@@ -5,7 +5,7 @@ Nexus Sonatype Infrastructure As Code using [nexus-casc-plugin](https://github.c
 
 ### Prerequisites
 ```
-rm -fr ~/.ansible/roles/rv-common
+rm -fr ~/.ansible/roles/rv-common || echo .
 sleep 2
 ansible-galaxy install -r roles/requirements.yml
 ```
