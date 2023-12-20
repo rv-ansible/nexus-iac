@@ -3,6 +3,7 @@
 - set_fact: 
    fail_if_exist: true
    unarchive: true
+   archive_file: "{{tmp_folder}}/nexus-{{app.version}}-unix.tar.gz"
 
 - name: call task from another role
   include_role:

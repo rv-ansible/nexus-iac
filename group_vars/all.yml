@@ -6,7 +6,6 @@ app:
   name: nexus-sonatype
   version: 3.62.0-01 
   os_user: nexus
-  os_group: nexus
   folder: /opt/sonatype
   port: 8081
   user_home: /home/nexus
