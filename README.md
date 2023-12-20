@@ -25,6 +25,7 @@ please add it and create a pull request,_
 - epel-release
 - nexus-3.62.0-01-unix.tar.gz
 - java-1.8.0-openjdk.x86_64
+- git
 - maven
 ```
 
@@ -39,7 +40,7 @@ Make sure ansible_user have sudo access on the target vm.
 
 Run the ansible in cli,
 ```
-ansible-playbook -i inventory/linux.ini deploy.yml -v
+ansible-playbook -i inventory/linux.ini deploy.yml -v --tags deploy_centos8
 ```
 
 ***I did not add sudo access on nexus user, it still works, I tested pull on the docker proxy and push on the docker hosted.***</br>

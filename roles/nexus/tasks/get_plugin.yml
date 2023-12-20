@@ -5,7 +5,7 @@
     repo: "{{git_plugin}}"
     dest: /tmp/nexus-casc-plugin 
     single_branch: yes
-    version: v"{{nexus_ver}}".0
+    version: v"{{app.version}}".0
     depth: 1
     update: yes
     force: yes
@@ -17,6 +17,6 @@
 
 - name: Copy the plugin to ansible
   ansible.builtin.fetch:
-    src: /tmp/nexus-casc-plugin/target/nexus-casc-plugin-{{nexus_ver}}-bundle.kar
+    src: /tmp/nexus-casc-plugin/target/nexus-casc-plugin-{{app.version}}-bundle.kar
     dest: /tmp  
 
