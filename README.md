@@ -47,3 +47,9 @@ ansible-playbook -i inventory/linux.ini deploy.yml -v --tags deploy_centos8
 ***Make sure the Nexus Sonatype version is the same as the nexus-casc-plugin version/tag.***</br>
 ***The version or tag is defined on the variable of group_vars/all.***</br>
 ***The docker I haven't started it yet but if you can please create a pull request.***</br>
+
+### TIPS
+***if you only want to test download_package task on iac4***
+```
+ansible-playbook -i inventory/linux.ini deploy.yml -v --tags iac4 --extra-vars "setup_folder=false setup_startup=false copy_plugin=false iac=false"
+```

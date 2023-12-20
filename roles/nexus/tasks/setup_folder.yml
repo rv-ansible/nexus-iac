@@ -1,23 +1,21 @@
 ---
 
-- name: Check /opt/sonatype folder
-  stat:
-    path: /opt/sonatype
-  register: file_info
-  failed_when: file_info.stat.exists
+- set_fact: 
+   fail_if_exist: true
+   unarchive: true
 
-- name: unarchive tar
-  ansible.builtin.unarchive:
-    src: /opt/nexus-{{ app.version }}-unix.tar.gz
-    dest: /opt
-    remote_src: yes
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: fail_if_exist
+
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: unarchive
 
 - name: setup nexus folder
-  shell: |
-         mkdir -p "{{ app.folder }}"
-         mv /opt/nexus-"{{ app.version }}" /opt/nexus
-         mv /opt/nexus/ "{{ app.folder }}"
-         mv /opt/sonatype-work/ "{{ app.folder }}"
+  shell: mv {{ app.folder }}/nexus-"{{ app.version }}" "{{ app.folder }}"/nexus
  
 - name: Create nexus script -without this IAC will not be possible
   template:
@@ -27,9 +25,16 @@
     owner: nexus
     group: nexus
 
-- name: make run_as_user as nexus
-  shell: |
-         echo 'run_as_user="nexus"' > /opt/sonatype/nexus/bin/nexus.rc  
+- set_fact:
+    update_file: true
+    folder_path: "{{ app.folder }}/nexus/bin/nexus.rc"
+    search_string: "run_as_user"
+    new_string: 'run_as_user="nexus"'  
 
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: update_file
+          
 - name: change attribute and ownership
   include_tasks: chown.yml

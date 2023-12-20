@@ -1,12 +1,43 @@
 ---
 
-- name: Save init password to bashrc
-  shell: |
-         echo "export NEXUS_PASSWD=`cat /opt/sonatype/sonatype-work/nexus3/admin.password`" >> /home/nexus/.bashrc
+- set_fact: 
+   get_content: true
+   folder_path: "{{ app.folder }}/sonatype-work/nexus3/admin.password"
+
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: get_content
+
+- set_fact: tmp_pwd="{{mounts['content']|b64decode}}"
+  no_log: true
+
+- set_fact:
+    update_file: true
+    folder_path: "{{app.user_home}}/.bashrc"
+    search_string: "export NEXUS_PASSWD="
+    new_string: 'export NEXUS_PASSWD={{tmp_pwd}}'  
+    no_log: true
+
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: update_file
 
 - name: Enable IAC
   shell: |
          grep nexus.scripts.allowCreation=true /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties || echo "nexus.scripts.allowCreation=true" >> /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties
+
+- set_fact:
+    update_file: true
+    folder_path: "{{ app.folder }}/sonatype-work/nexus3/etc/nexus.properties"
+    search_string: "nexus.scripts.allowCreation=true"
+    new_string: 'nexus.scripts.allowCreation=true'  
+
+- name: Enable IAC
+  include_role:
+    name: rv-common
+    tasks_from: update_file         
 
 - name: Copy nexus.yml
   template:
@@ -22,11 +53,26 @@
 - name: Start using the script
   include_tasks: start_stop.yml
 
-- name: Cleanup 
-  shell: | 
-         rm -f /opt/nexus*.tar.gz*
-         rm -f /opt/nexus.yml    
-         sed -i 's/nexus.scripts.allowCreation=true//'  /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties  
+- set_fact:
+    remove_files: true
+    remove_content: true
+    folder_path: "{{ app.folder }}/sonatype-work/nexus3/etc/nexus.properties"
+    search_string: "nexus.scripts.allowCreation=true"
+    file_list:
+      - "{{tmp_folder}}/nexus-{{app.version}}-unix.tar.gz"
+      - /opt/nexus.yml   
+      - /opt/nexus.sh
+
+- name: call task from another role (cleanup files)
+  include_role:
+    name: rv-common
+    tasks_from: remove_files
+
+- name: call task from another role (cleanup content)
+  include_role:
+    name: rv-common
+    tasks_from: remove_content
+
 
 - name: End message
   shell: |

@@ -9,6 +9,7 @@ app:
   os_group: nexus
   folder: /opt/sonatype
   port: 8081
+  user_home: /home/nexus
    
 bashrc_env:
   - "export BASE_URL=http://{{ ansible_hostname }}:8081"
@@ -24,7 +25,8 @@ bashrc_env:
 git_plugin: https://github.com/AdaptiveConsulting/nexus-casc-plugin.git
 url_package: https://download.sonatype.com/nexus/3/nexus-{{ app.version }}-unix.tar.gz
 
-
 firewall_list:
   - "{{ app.port }}/tcp"
   - 8070/tcp
+
+tmp_folder: /tmp  
