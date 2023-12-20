@@ -9,7 +9,7 @@
       - epel-release 
       - java-1.8.0-openjdk.x86_64
   roles: 
-    - { role: rv-common, update: true }
+    - { role: rv-common, update_os: true }
     - { role: rv-common, download_bin: true } 
   tags: 
     - deploy_centos8
