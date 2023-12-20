@@ -14,10 +14,10 @@
 
 - name: setup nexus folder
   shell: |
-         mkdir -p /opt/sonatype
+         mkdir -p "{{ app.folder }}"
          mv /opt/nexus-"{{ app.version }}" /opt/nexus
-         mv /opt/nexus/ /opt/sonatype/
-         mv /opt/sonatype-work/ /opt/sonatype/
+         mv /opt/nexus/ "{{ app.folder }}"
+         mv /opt/sonatype-work/ "{{ app.folder }}"
  
 - name: Create nexus script -without this IAC will not be possible
   template:

@@ -47,7 +47,6 @@
   hosts: nexus
   any_errors_fatal: true
   become: true   
-  vars:     
   roles:
     - { role: rv-common, download_package: true }   
     - { role: nexus, setup_folder: true }   

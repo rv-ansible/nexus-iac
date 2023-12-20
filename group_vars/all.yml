@@ -8,6 +8,7 @@ app:
    name: nexus-sonatype
    version: 3.62.0-01 
    os_user: nexus
+   folder: /opt/sonatype
    
 bashrc_env:
   - "export BASE_URL=http://{{ ansible_hostname }}:8081"
