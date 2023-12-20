@@ -24,10 +24,6 @@
     name: rv-common
     tasks_from: update_file
 
-- name: Enable IAC
-  shell: |
-         grep nexus.scripts.allowCreation=true /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties || echo "nexus.scripts.allowCreation=true" >> /opt/sonatype/sonatype-work/nexus3/etc/nexus.properties
-
 - set_fact:
     update_file: true
     folder_path: "{{ app.folder }}/sonatype-work/nexus3/etc/nexus.properties"
