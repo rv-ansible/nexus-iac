@@ -17,7 +17,7 @@
     folder_path: "{{app.user_home}}/.bashrc"
     search_string: "export NEXUS_PASSWD="
     new_string: 'export NEXUS_PASSWD={{tmp_pwd}}'  
-    no_log: true
+  no_log: true
 
 - name: call task from another role
   include_role:
