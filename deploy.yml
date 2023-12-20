@@ -9,7 +9,6 @@
     package_list:
       - epel-release 
       - java-1.8.0-openjdk.x86_64
-      - git 
   roles: 
     - { role: rv-common, update: true }
     - { role: rv-common, download_bin: true } 
@@ -36,6 +35,7 @@
   vars:  
     package_list:
       - maven     
+      - git 
   roles: 
     - { role: rv-common, download_bin: true } 
     - { role: nexus, get_plugin: true } 
