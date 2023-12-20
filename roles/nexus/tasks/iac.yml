@@ -43,8 +43,17 @@
     owner: nexus
     group: nexus
                 
-- name: Change attribute and ownership
-  include_tasks: chown.yml
+- set_fact:
+    change_permission: true
+    file_mode: 0755
+    file_list:
+      - "{{ app.folder }}/nexus"
+      - "{{ app.folder }}/sonatype-work"
+    
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: change_permission
 
 - name: Start using the script
   include_tasks: start_stop.yml

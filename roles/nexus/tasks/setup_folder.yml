@@ -35,7 +35,16 @@
 - name: call task from another role
   include_role:
     name: rv-common
-    tasks_from: update_file
-          
-- name: change attribute and ownership
-  include_tasks: chown.yml
+    tasks_from: update_file          
+
+- set_fact:
+    change_permission: true
+    file_mode: 0755
+    file_list:
+      - "{{ app.folder }}/nexus"
+      - "{{ app.folder }}/sonatype-work"
+    
+- name: call task from another role
+  include_role:
+    name: rv-common
+    tasks_from: change_permission
