@@ -40,6 +40,7 @@
 - set_fact:
     change_permission: true
     file_mode: 0755
+    recursive: yes
     file_list:
       - "{{ app.folder }}/nexus"
       - "{{ app.folder }}/sonatype-work"
