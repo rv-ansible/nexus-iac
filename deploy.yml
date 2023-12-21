@@ -20,7 +20,7 @@
   any_errors_fatal: true
   become: true   
   roles: 
-    - { role: rv-common, adduser: true }     
+    - { role: rv-common, adduser: true, os_user: "{{app.os_user}}" }     
     - { role: rv-common, allowport: true }   
     - { role: rv-common, setup_bashrc: true } 
   tags: 

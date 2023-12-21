@@ -4,6 +4,7 @@
    fail_if_exist: true
    unarchive: true
    archive_file: "{{tmp_folder}}/nexus-{{app.version}}-unix.tar.gz"
+   folder: "{{app.folder}}"
 
 - name: call task from another role
   include_role:
@@ -39,6 +40,7 @@
 
 - set_fact:
     change_permission: true
+    os_user: "{{ app.os_user }}"
     file_mode: 0755
     recursive: yes
     file_list:

@@ -45,6 +45,7 @@
                 
 - set_fact:
     change_permission: true
+    os_user: "{{ app.os_user }}"
     file_mode: 0755
     recursive: yes
     file_list:
