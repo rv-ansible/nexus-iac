@@ -4,7 +4,7 @@
    get_content: true
    folder_path: "{{ app.folder }}/sonatype-work/nexus3/admin.password"
 
-- name: call task from another role
+- name: Get the temp password
   include_role:
     name: rv-common
     tasks_from: get_content
@@ -19,7 +19,7 @@
     new_string: 'export NEXUS_PASSWD={{tmp_pwd}}'  
   no_log: true
 
-- name: call task from another role
+- name: Update the bashrc with NEXUS_PASSWD
   include_role:
     name: rv-common
     tasks_from: update_file
@@ -52,7 +52,7 @@
       - "{{ app.folder }}/nexus"
       - "{{ app.folder }}/sonatype-work"
     
-- name: call task from another role
+- name: Change the permission recursively of app folders
   include_role:
     name: rv-common
     tasks_from: change_permission
@@ -70,12 +70,12 @@
       - /opt/nexus.yml   
       - /opt/nexus.sh
 
-- name: call task from another role (cleanup files)
+- name: Cleanup files
   include_role:
     name: rv-common
     tasks_from: remove_files
 
-- name: call task from another role (cleanup content)
+- name: Cleanup content
   include_role:
     name: rv-common
     tasks_from: remove_content

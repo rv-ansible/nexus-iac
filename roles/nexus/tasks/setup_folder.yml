@@ -6,12 +6,12 @@
    archive_file: "{{tmp_folder}}/nexus-{{app.version}}-unix.tar.gz"
    folder: "{{app.folder}}"
 
-- name: call task from another role
+- name: Check if {{app.folder}} exist
   include_role:
     name: rv-common
     tasks_from: fail_if_exist
 
-- name: call task from another role
+- name: Unarchive package
   include_role:
     name: rv-common
     tasks_from: unarchive
@@ -33,7 +33,7 @@
     search_string: "run_as_user"
     new_string: 'run_as_user="nexus"'  
 
-- name: call task from another role
+- name: Setup nexus as user
   include_role:
     name: rv-common
     tasks_from: update_file          
@@ -47,7 +47,7 @@
       - "{{ app.folder }}/nexus"
       - "{{ app.folder }}/sonatype-work"
     
-- name: call task from another role
+- name: Change permission recursively
   include_role:
     name: rv-common
     tasks_from: change_permission
